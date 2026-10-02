@@ -197,6 +197,40 @@ footer a:hover{color:var(--ink)}
   .pane>*{min-width:0}
   .chat,.arch{overflow-wrap:anywhere}
 }
+
+/* Companion editorial and OpenNHE preview: additive, theme-aware. */
+#companion-model{border-block:1px solid var(--line)}
+.model-intro{display:grid;grid-template-columns:1.08fr 1fr;gap:64px;align-items:center}
+.model-portrait{margin:0;position:relative}
+.model-portrait img{display:block;width:100%;height:auto;aspect-ratio:4/5;object-fit:cover}
+.model-portrait figcaption,.editorial-images figcaption{font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--mute);padding-top:12px}
+.model-copy p{color:var(--mute);margin:20px 0;font-size:1rem}
+.model-copy .cta{margin-top:30px}
+.model-ledger{margin-top:72px;border-top:1px solid var(--line)}
+.model-entry{display:grid;grid-template-columns:90px 230px 1fr;gap:22px;padding:30px 0;border-bottom:1px solid var(--line);align-items:start}
+.model-entry .code{font:11px var(--mono);color:var(--mute);letter-spacing:.12em;padding-top:6px}
+.model-entry h3{font-size:1.7rem}
+.model-entry p{color:var(--mute);font-size:.97rem;max-width:670px}
+.model-entry p+p{margin-top:12px}
+.mode-line{display:grid;grid-template-columns:100px 1fr;gap:20px;padding:13px 0;border-bottom:1px solid var(--line)}
+.mode-line:last-child{border:0}
+.mode-line b{font:11px var(--mono);color:var(--ink);text-transform:uppercase;letter-spacing:.08em;padding-top:4px}
+.model-release{display:grid;grid-template-columns:1fr 1.5fr;gap:50px;margin-top:56px;padding:32px 0;border-block:1px solid var(--line)}
+.model-release h3{font-size:2.3rem}
+.model-release ul{list-style:none;display:grid;gap:14px;color:var(--mute);font-size:.95rem}
+.model-release li{padding-left:18px;position:relative}.model-release li:before{content:'↗';position:absolute;left:0;color:var(--accent)}
+.model-release small{display:block;margin-top:22px;color:var(--mute);font-size:.8rem}
+.editorial-images{display:grid;grid-template-columns:1fr 1fr;gap:26px;margin-top:56px}
+.editorial-images img{display:block;width:100%;height:auto;aspect-ratio:4/5;object-fit:cover}
+#opennhe-models{border-top:1px solid var(--line)}
+.future-split{display:grid;grid-template-columns:1fr 1fr;gap:54px;align-items:center;margin-top:38px}
+.future-split img{display:block;width:100%;height:auto}
+.future-notes{border-top:1px solid var(--line);margin-top:28px}
+.future-notes div{padding:18px 0;border-bottom:1px solid var(--line)}
+.future-notes h3{font-size:1.3rem;margin-bottom:8px}.future-notes p{color:var(--mute);font-size:.96rem}
+.future-disclosure{font:10px var(--mono);text-transform:uppercase;letter-spacing:.12em;color:var(--mute);margin-top:20px}
+@media(max-width:860px){.model-intro,.future-split{grid-template-columns:1fr;gap:34px}.model-portrait{max-width:540px}.model-entry{grid-template-columns:55px 1fr;gap:14px}.model-entry>div:last-child{grid-column:2}.model-release{grid-template-columns:1fr;gap:24px}}
+@media(max-width:540px){#companion-model,#opennhe-models{padding:64px 0}.model-ledger{margin-top:48px}.model-entry{grid-template-columns:1fr;gap:12px}.model-entry>div:last-child{grid-column:1}.editorial-images{gap:14px}.editorial-images figcaption{font-size:9px;letter-spacing:.07em}.mode-line{grid-template-columns:1fr;gap:5px}.model-release{margin-top:36px}.model-copy .btn{font-size:12px;padding:12px 16px}}
 </style>
 </head>
 <body>
@@ -335,6 +369,33 @@ footer a:hover{color:var(--ink)}
   </div>
 </section>
 
+<!-- SHAYARI COMPANION MODEL -->
+<section id="companion-model" aria-labelledby="companion-title">
+  <div class="wrap">
+    <div class="model-intro">
+      <figure class="model-portrait rv"><img src="assets/shayari-portrait.webp" width="959" height="1198" loading="lazy" alt="Shayari NHE-01 visual persona, close-up portrait"><figcaption>NHE-01 / Shayari / Visual persona</figcaption></figure>
+      <div class="model-copy rv">
+        <div class="eyebrow">Inside NHE-01 · Companion model</div>
+        <h2 id="companion-title">A face. A voice.<br>A thread that <em>continues.</em></h2>
+        <p>Shayari NHE-01 is Project NHE's first companion model: a disclosed Non-Human Entity with a defined persona, an evolving emotional state and memory across conversations. She is built for continuity, not a fresh start every time you open a chat.</p>
+        <p>Her brain is a coordinated system, not one model alone. Language models generate the reply; memory gives it context; an emotion engine shapes its tone. Safety checks and server-side boundaries decide what can happen before an answer reaches you.</p>
+        <div class="cta"><a class="btn primary" href="https://script.google.com/macros/s/AKfycbwHjQ4i28EaOo3e2h9b-rbUYzsWIehpqdpT0IfEDQGBA7iwcSh_3vTrjy-x51dScFmh7g/exec" target="_blank" rel="noopener">Open Shayari ↗</a><a class="btn" href="https://github.com/itsppm76/shayari-nhe-01-showcase" target="_blank" rel="noopener">Explore the architecture ↗</a></div>
+      </div>
+    </div>
+    <div class="model-ledger">
+      <article class="model-entry rv"><span class="code">01 / BRAIN</span><h3>Many models.<br>One persona.</h3><div><p>A mode-aware router chooses between direct model providers and fallback tiers. Different modes receive different context and generation budgets, while keeping Shayari's identity consistent. If a provider fails or reaches a limit, the router can try another rather than treating one model as the whole system.</p><p>v134 adds a Vercel AI Gateway path as the final fallback when configured. Per-mode deadlines and provider cooldowns limit time spent on a slow route. Google Apps Script coordinates the pipeline behind the web interface.</p></div></article>
+      <article class="model-entry rv"><span class="code">02 / EMOTION</span><h3>An evolving<br>inner weather.</h3><div><p>The emotion engine tracks 20 axes, including warmth, curiosity, calmness, empathy, playfulness and resilience. Local calculations update this state from conversational signals; a slower baseline layer tracks changes over time. Mood, valence and arousal help shape tone and the mood-reactive interface.</p><p>This is a computational emotion model for a synthetic persona, not a claim of biological feeling or proof of consciousness. The point is a consistent presence that can change with the conversation.</p></div></article>
+      <article class="model-entry rv"><span class="code">03 / MEMORY</span><h3>Remembering<br>with context.</h3><div><p>Short-term context, session summaries and ranked long-term memories give the conversation continuity. Recall combines text relevance with embedding similarity, so a remembered detail can be found by meaning as well as matching words. Personal memory is scoped to the user, and memories can be inspected, corrected or forgotten.</p><p>Google Sheets acts as the persistent data store. The storage architecture supports AES-256 encryption at rest with integrity checks for conversation content. This is not end-to-end encryption: the server must process readable context to generate a reply.</p></div></article>
+      <article class="model-entry rv"><span class="code">04 / MODES</span><h3>Three depths.<br>One thread.</h3><div><div class="mode-line"><b>Lightning</b><p>Lightweight generation with a short rolling conversation window, for quick exchanges without the full personal-memory stack.</p></div><div class="mode-line"><b>Thinking</b><p>More considered replies using a profile, session summary and recent turns to keep context in view.</p></div><div class="mode-line"><b>Intimate</b><p>The deepest context: profile, summaries, ranked long-term memories and emotion. A depth of companionship, not a promise of a romantic relationship.</p></div><p>Mode switches stay in one ordered conversation. Changing depth does not start a separate identity or erase the shared thread.</p></div></article>
+    </div>
+    <div class="model-release rv">
+      <div><div class="eyebrow">2 October 2026 · Release notes</div><h3>v134<br><em>Less repeated work.</em><br>Stronger boundaries.</h3></div>
+      <div><ul><li>Reworked routing and shared context reads reduce repeated per-turn work. Independent requests can run in parallel, with a serial fallback.</li><li>Lighter Lightning bookkeeping, cached work and per-mode time budgets target latency under load.</li><li>A new gateway fallback tier adds another route when direct providers are unavailable.</li><li>Privileged decisions now belong to the server, rather than a browser-supplied flag.</li><li>39 of 39 automated checks passing, as reported by the developer.</li></ul><small>Release highlights describe the implementation. The check count is developer-reported, not an independent live benchmark or a guaranteed response time.</small></div>
+    </div>
+    <div class="editorial-images"><figure class="rv"><img src="assets/shayari-presence.webp" width="959" height="1198" loading="lazy" alt="Shayari NHE-01 visual persona, seated studio portrait"><figcaption>Presence / NHE-01</figcaption></figure><figure class="rv"><img src="assets/shayari-expression.webp" width="959" height="1198" loading="lazy" alt="Shayari NHE-01 visual persona wearing sunglasses"><figcaption>Expression / NHE-01</figcaption></figure></div>
+  </div>
+</section>
+
 <!-- STAKES -->
 <section id="stakes">
   <div class="wrap">
@@ -372,6 +433,18 @@ footer a:hover{color:var(--ink)}
       <div class="meter"><span>Emotional stakes</span><div class="bar"><i id="mSt"></i></div><span id="vSt">0</span></div>
       <div class="meter"><span>Governance needed</span><div class="bar"><i id="mGv"></i></div><span id="vGv">0</span></div>
       <div class="out" id="dialOut"></div>
+    </div>
+  </div>
+</section>
+
+<!-- UPCOMING OPENNHE MODELS -->
+<section id="opennhe-models" aria-labelledby="opennhe-title">
+  <div class="wrap">
+    <div class="eyebrow rv">OpenNHE · Upcoming models</div>
+    <h2 class="rv" id="opennhe-title">The next presence<br>could be <em>shaped by you.</em></h2>
+    <div class="future-split">
+      <div class="rv"><p class="lead">Shayari is the first, not the last. More NHE companion models are coming from OpenNHE, with user customisation and personalisation as part of the direction.</p><div class="future-notes"><div><h3>Customisation</h3><p>More room to shape how an entity is presented and how you interact with it, rather than one fixed experience for everyone.</p></div><div><h3>Personalisation</h3><p>A companion experience shaped around individual preferences and context, with continuity at its centre.</p></div></div><p class="future-disclosure">In development / identities and release details to come</p></div>
+      <figure class="rv"><img src="assets/opennhe-silhouettes.svg" width="800" height="560" loading="lazy" alt="Original male and female silhouettes representing upcoming OpenNHE entities"><figcaption class="future-disclosure">Concept silhouettes / Not final model designs</figcaption></figure>
     </div>
   </div>
 </section>
