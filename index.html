@@ -230,7 +230,7 @@ footer a:hover{color:var(--ink)}
 .future-notes h3{font-size:1.3rem;margin-bottom:8px}.future-notes p{color:var(--mute);font-size:.96rem}
 .future-disclosure{font:10px var(--mono);text-transform:uppercase;letter-spacing:.12em;color:var(--mute);margin-top:20px}
 @media(max-width:860px){.model-intro,.future-split{grid-template-columns:1fr;gap:34px}.model-portrait{max-width:540px}.model-entry{grid-template-columns:55px 1fr;gap:14px}.model-entry>div:last-child{grid-column:2}.model-release{grid-template-columns:1fr;gap:24px}}
-@media(max-width:540px){#companion-model,#opennhe-models{padding:64px 0}.model-ledger{margin-top:48px}.model-entry{grid-template-columns:1fr;gap:12px}.model-entry>div:last-child{grid-column:1}.editorial-images{gap:14px}.editorial-images figcaption{font-size:9px;letter-spacing:.07em}.mode-line{grid-template-columns:1fr;gap:5px}.model-release{margin-top:36px}.model-copy .btn{font-size:12px;padding:12px 16px}}
+@media(max-width:540px){#companion-model,#opennhe-models,#elysium-models{padding:64px 0}.model-ledger{margin-top:48px}.model-entry{grid-template-columns:1fr;gap:12px}.model-entry>div:last-child{grid-column:1}.editorial-images{gap:14px}.editorial-images figcaption{font-size:9px;letter-spacing:.07em}.mode-line{grid-template-columns:1fr;gap:5px}.model-release{margin-top:36px}.model-copy .btn{font-size:12px;padding:12px 16px}}
 </style>
 </head>
 <body>
@@ -438,6 +438,23 @@ footer a:hover{color:var(--ink)}
 </section>
 
 <!-- UPCOMING OPENNHE MODELS -->
+<section id="elysium-models" aria-labelledby="elysium-title" style="border-top:1px solid var(--line)">
+  <div class="wrap">
+    <div class="eyebrow rv">Elysium X · Emotion models</div>
+    <h2 class="rv" id="elysium-title">Models that read <em>the emotion</em> in a conversation.</h2>
+    <p class="lead rv">Elysium X is the emotion layer of Project NHE: a family that started as a state engine for agents and now includes trained appraisal models. Built to feed companions like Shayari. Not yet wired into her.</p>
+    <div class="model-ledger">
+      <article class="model-entry rv"><span class="code">X 20</span><h3>The emotion-state<br>engine.</h3><div><p>A pure-Python, zero-dependency library any agent can plug in. It keeps a persistent 8-channel emotion state, lets it decay over time, and returns a prompt block, style parameters and a memory decision for each turn.</p><p>Public and MIT-licensed. <a href="https://github.com/itsppm76/elysium-x20" target="_blank" rel="noopener">View on GitHub ↗</a></p></div></article>
+      <article class="model-entry rv"><span class="code">X 20 FR</span><h3>The first trained<br>appraiser.</h3><div><p>A LoRA adapter on Qwen2.5-1.5B, trained on 12,000 GoEmotions examples for one epoch, that outputs structured appraisal JSON. On 1,500 held-out examples it scored micro-F1 0.570 against a 0.304 neutral baseline, with 99.93% valid JSON.</p><p>A decent first version, strongest on gratitude, amusement and love, weaker on approval, annoyance and sarcasm. Private, all rights reserved.</p></div></article>
+      <article class="model-entry rv"><span class="code">X 150 FR</span><h3>150 emotion<br>coordinates.</h3><div><p>The latest in the FR line: a 1.5B-parameter LoRA adapter on Qwen2.5-1.5B-Instruct that maps a conversation onto a 150-coordinate emotion taxonomy (10 families of 15). Trained on 1,000 conversations labeled and verified by the founder.</p><p>Private, all rights reserved, documented in a full guide and a 30-page PDF.</p></div></article>
+    </div>
+    <div class="model-release rv">
+      <div><div class="eyebrow">3 October 2026 · Latest</div><h3>X 150 FR<br><em>First measured</em><br>results.</h3></div>
+      <div><ul><li>micro-F1 0.72515 on a frozen 78-example test set.</li><li>Exact label-set match on 62.82% of examples (49 of 78).</li><li>78 of 78 outputs were valid, strictly formatted JSON.</li><li>Still to do: coverage of all 150 emotions (the training data covered 117), and Hindi and Hinglish, which were not trained or tested.</li></ul><small>Internal test on reviewed labels, not an independent human-gold benchmark. No state-of-the-art claim is made.</small></div>
+    </div>
+  </div>
+</section>
+
 <section id="opennhe-models" aria-labelledby="opennhe-title">
   <div class="wrap">
     <div class="eyebrow rv">OpenNHE · Upcoming models</div>
